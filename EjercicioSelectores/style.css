@@ -1,19 +1,14 @@
 /*From less to more Specificity*/
-*{
+* {}
 
-}
-h1{
-    
-}
-.container{
+h1 {}
 
-}
-.container href{
+.container {}
 
-}
-#titulo{
+.container href {}
 
+#titulo {}
+
+* {
+    color: azure !important;
 }
-*{
-color:azure
-    !important;}

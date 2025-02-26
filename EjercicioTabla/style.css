@@ -1,0 +1,25 @@
+caption, td{
+
+    text-align: center;
+}
+span{
+    background-color: #00BFFF;
+    text-align: center;
+    font-weight: bolder;
+}
+table{
+    width: 400px;
+    height: 100px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border: solid black 4px;
+    background-color: bisque;
+}
+td{
+    border-bottom: solid black 2px;
+    border-left: solid black 1px;
+
+}
+th.tituloInferior{
+    background-color: #00BFFF;
+}

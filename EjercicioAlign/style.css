@@ -1,0 +1,15 @@
+*{
+    background-color: bisque;
+}
+div{
+    background-color: lightgray;
+    margin: 50px 100px;
+    border: solid black 1px;
+    padding: 5px;
+}
+.center{
+    text-align: center;
+}
+.left{
+    text-align: right;
+}
