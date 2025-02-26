@@ -2,8 +2,9 @@
     background-color: bisque;
 }
 div{
+    
     background-color: lightgray;
-    margin: 50px 100px;
+    margin: 50px 400px;
     border: solid black 1px;
     padding: 5px;
 }
