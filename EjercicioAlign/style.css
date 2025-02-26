@@ -5,6 +5,8 @@ div{
     
     background-color: lightgray;
     margin: 50px 400px;
+    width: 200px;
+    height: 25px;
     border: solid black 1px;
     padding: 5px;
 }
