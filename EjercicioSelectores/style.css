@@ -1,0 +1,19 @@
+/*From less to more Specificity*/
+*{
+
+}
+h1{
+    
+}
+.container{
+
+}
+.container href{
+
+}
+#titulo{
+
+}
+*{
+color:azure
+    !important;}
