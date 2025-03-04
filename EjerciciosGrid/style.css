@@ -28,15 +28,15 @@ body {
 .banner { background: #f4a261; color: black; padding: 20px; text-align: center; }
 .extra { background: #2a9d8f; color: white; padding: 20px; text-align: center; }
 .image { background: #a8dadc; color: black; padding: 20px; text-align: center; }
+/* 
 
-/* --- MOBILE (≤425px) --- */
 @media (max-width: 425px) {
     .grid-container {
         grid-template-columns: 1fr;
     }
 }
 
-/* --- TABLET (≥426px y ≤768px) --- */
+
 @media (min-width: 426px) and (max-width: 768px) {
     .grid-container {
         grid-template-columns: 2fr 1fr;
@@ -49,7 +49,7 @@ body {
     }
 }
 
-/* --- DESKTOP (≥769px) --- */
+
 @media (min-width: 769px) {
     .grid-container {
         grid-template-columns: 1fr 1fr 1fr;
@@ -60,9 +60,20 @@ body {
             "main image extra"
             "banner banner banner";
     }
+} 
+*/
+
+.grid-container {
+    display: grid; /* Agregar esto para activar Grid */
+    grid-template-rows: 1fr 4fr 4fr 2fr 2fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "header header header header"
+        "hero hero hero hero"
+        "menu main menu main"
+        "banner banner banner banner"
+        "extra image extra image";
 }
-
-
 /* Asignación de áreas */
 .header { grid-area: header; }
 .menu { grid-area: menu; }
