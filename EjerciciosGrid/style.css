@@ -52,14 +52,16 @@ body {
 /* --- DESKTOP (≥769px) --- */
 @media (min-width: 769px) {
     .grid-container {
-        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
         grid-template-areas:
             "header header menu"
             "hero hero hero"
-            "main main image"
-            "banner banner extra";
+            "main image extra"
+            "banner banner banner";
     }
 }
+
 
 /* Asignación de áreas */
 .header { grid-area: header; }
