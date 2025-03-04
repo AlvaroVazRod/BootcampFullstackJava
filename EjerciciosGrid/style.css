@@ -1,0 +1,71 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.grid-container {
+    display: grid;
+    gap: 5px;
+    width: 90%;
+    max-width: 1024px;
+}
+
+.header { background: #111; color: white; padding: 20px; text-align: center; }
+.menu { background: #e63946; color: white; padding: 20px; text-align: center; }
+.hero { background: #457b9d; color: white; padding: 40px; text-align: center; }
+.main { background: #1d3557; color: white; padding: 40px; text-align: center; }
+.banner { background: #f4a261; color: black; padding: 20px; text-align: center; }
+.extra { background: #2a9d8f; color: white; padding: 20px; text-align: center; }
+.image { background: #a8dadc; color: black; padding: 20px; text-align: center; }
+
+/* --- MOBILE (≤425px) --- */
+@media (max-width: 425px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- TABLET (≥426px y ≤768px) --- */
+@media (min-width: 426px) and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "header header"
+            "hero hero"
+            "menu main"
+            "banner banner"
+            "extra image";
+    }
+}
+
+/* --- DESKTOP (≥769px) --- */
+@media (min-width: 769px) {
+    .grid-container {
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-areas:
+            "header header menu"
+            "hero hero hero"
+            "main main image"
+            "banner banner extra";
+    }
+}
+
+/* Asignación de áreas */
+.header { grid-area: header; }
+.menu { grid-area: menu; }
+.hero { grid-area: hero; }
+.main { grid-area: main; }
+.banner { grid-area: banner; }
+.extra { grid-area: extra; }
+.image { grid-area: image; }
