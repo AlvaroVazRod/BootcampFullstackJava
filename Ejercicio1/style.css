@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+nav {
+    background: #ddd;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #e63946;
+}
+
+section {
+    padding: 100px 20px;
+    margin-top: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+.top-link {
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 10px;
+}
