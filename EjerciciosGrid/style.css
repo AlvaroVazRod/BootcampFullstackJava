@@ -86,13 +86,4 @@ body {
 .extra { grid-area: extra; }
 .image { grid-area: image; }
 
-.grid-container {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 7% 3fr 1fr 1fr 1fr;
-    grid-template-areas:
-        "header menu menu menu"
-        "hero hero hero hero"
-        "main main . image"
-        "main main . extra"
-        "banner banner banner banner";
-}
+
