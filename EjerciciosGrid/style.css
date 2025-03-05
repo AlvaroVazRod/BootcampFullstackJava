@@ -51,7 +51,7 @@ body {
 @media (min-width: 426px) and (max-width: 768px) {
     .grid-container {
     display: grid;
-    grid-template-columns:  (4, 1fr);
+    grid-template-columns: repeat (4, 1fr);
     grid-template-rows: 1fr 4fr 4fr 2fr 2fr; 
     grid-template-areas:
         "header header header header"
