@@ -1,0 +1,29 @@
+/* Estilos generales */
+body {
+    font-family: serif;
+    margin: 40px;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Estilo del título principal */
+h1 {
+    font-size: 32px;
+}
+
+/* Imagen centrada */
+.logo {
+    width: 300px;
+    display: block;
+    margin: 20px 0;
+}
+
+/* Estilos del enlace */
+a {
+    color: blue;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: darkblue;
+}
