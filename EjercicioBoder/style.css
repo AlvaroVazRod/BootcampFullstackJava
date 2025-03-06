@@ -1,0 +1,11 @@
+body {
+    border-bottom: 5px solid red;
+    border-left: 5px double black;
+    border-top: 10px dotted greenyellow;
+    border-right: 10px dashed navy;
+    margin:auto;
+}
+.container{
+    display:grid;
+    place-items: center;
+}
