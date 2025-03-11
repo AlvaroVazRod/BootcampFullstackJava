@@ -1,4 +1,4 @@
-var nombre;
+let nombre;
 do{
     nombre = prompt("Cual es tu nombre" );
 }while (nombre === null || nombre.trim() === "");
