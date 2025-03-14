@@ -3,14 +3,46 @@ let peticionApiPoke =
     "https://pokeapi.co/api/v2/pokemon?offset=" + peticionApiPag + "&limit=20";
 let DATA = [];
 const tipoPoke = [
-    "acero", "agua", "bicho", "dragón", "eléctrico", "fantasma", "fuego", "hada", "hielo", "lucha", "normal", "planta", "psíquico", "roca", "siniestro", "tierra", "veneno", "volador"
+    "acero",
+    "agua",
+    "bicho",
+    "dragón",
+    "eléctrico",
+    "fantasma",
+    "fuego",
+    "hada",
+    "hielo",
+    "lucha",
+    "normal",
+    "planta",
+    "psíquico",
+    "roca",
+    "siniestro",
+    "tierra",
+    "veneno",
+    "volador",
 ];
 
 const topoPokeIng = [
-    "steel", "water", "bug", "dragon", "electric", "ghost", "fire", "fairy", "ice", "fighting", "normal", "grass", "psychic", "rock", "dark", "ground", "poison", "flying"
+    "steel",
+    "water",
+    "bug",
+    "dragon",
+    "electric",
+    "ghost",
+    "fire",
+    "fairy",
+    "ice",
+    "fighting",
+    "normal",
+    "grass",
+    "psychic",
+    "rock",
+    "dark",
+    "ground",
+    "poison",
+    "flying",
 ];
-
-let selectedTypes = new Set(); 
 
 const actualizarPeticion = () => {
     peticionApiPag += 20;
@@ -30,20 +62,17 @@ document.addEventListener("scroll", () => {
 });
 
 async function peticioPoke() {
+    let date;
     try {
         let response = await fetch(peticionApiPoke);
         let data = await response.json();
-        let date = data.results;
-        console.log(DATA);
-        
-        for (let poke of date) {
-            let details = await fetch(poke.url);
-            let pokeData = await details.json();
-            poke.types = pokeData.types.map(t => t.type.name);
-        }
+        date = data.results;
 
-        DATA.push(...date);
-        actualizarPokedex();
+        añadirPoke(date);
+
+        DATA.push(date);
+        console.log(DATA);
+
         actualizarPeticion();
     } catch (error) {
         console.error("Error en la petición:", error);
@@ -57,27 +86,23 @@ function primeraLetra(texto) {
 
 async function añadirPoke(obj) {
     let pokedex = document.getElementById("grid-container");
-    pokedex.innerHTML = ""; 
     let id = peticionApiPag;
-
     for (let e of obj) {
         id++;
+
         e.id = id;
         e.img = await fotoPoke(e.url);
 
-        if (!e.types.some(type => selectedTypes.has(type))) {
-            let card = document.createElement("div");
-            card.className = "card";
-            card.innerHTML = `
-                <img src="${e.img}" alt="${primeraLetra(e.name)}">
-                <h2>${e.name}</h2>
-                <span>#${e.id}</span>
-            `;
-            pokedex.appendChild(card);
-        }
-        
+        let card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+        <img src="${e.img}" alt="${primeraLetra(e.name)}">
+        <h2>${e.name}</h2>
+        <span>#${e.id}</span>
+    `;
+
+        pokedex.appendChild(card);
     }
-    
 }
 
 async function fotoPoke(url) {
@@ -94,28 +119,17 @@ async function fotoPoke(url) {
 function creacionTipoPoke() {
     let box = document.getElementById("filtros");
 
-    tipoPoke.forEach((po, index) => {
+    tipoPoke.forEach((po) => {
         let fil = document.createElement("div");
         fil.className = "type " + po;
+        console.log(fil.classList);
         fil.innerHTML = primeraLetra(po);
 
         fil.addEventListener("click", function () {
             this.classList.toggle("selected");
-
-            let typeEng = topoPokeIng[index]; 
-            if (selectedTypes.has(typeEng)) {
-                selectedTypes.delete(typeEng);
-            } else {
-                selectedTypes.add(typeEng);
-            }
-
-            actualizarPokedex(); 
         });
-        
+
+
         box.appendChild(fil);
     });
-}
-
-async function actualizarPokedex() {
-    añadirPoke(DATA);
 }
