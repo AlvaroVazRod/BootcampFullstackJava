@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girar Cartas</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        h1{
+            font-size: 50px;
+        }
+        .carta {
+            margin: 30px auto;
+            display: grid;
+            width: 500px;
+            height: auto;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .front {
+            content: url('./card-front.png');
+        }
+
+        .back {
+            content: url('./card-back.png');
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Girar Carta</h1>
+        <img src="./card-back.png" class="carta back" alt="Carta">
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".carta").hover(
+
+                function () {
+                    $(this).toggleClass("front back");
+                },
+                function () {
+                    $(this).toggleClass("front back");
+                }
+            );
+        });
+    </script>
+</body>
+
+</html>
