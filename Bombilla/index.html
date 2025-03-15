@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombilla con Animación</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .container {
+            text-align: center;
+        }
+        .img {
+            margin: 30px auto;
+            display: block;
+        }
+        .on {
+            content: url('./on.jpg');
+        }
+        .off {
+            content: url('./off.jpg');
+        }
+        .switch-on {
+            content: url('./bon.jpg');
+        }
+        .switch-off {
+            content: url('./boff.jpg');
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Encender / Apagar</h1>
+        <img src="./off.jpg" class="img off" id="bulb" alt="bulb">
+        <img src="./boff.jpg" class="img switch-off" id="switch" alt="switch" style="cursor: pointer;">
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#switch").click(function () {
+                // Cambia la imagen de la bombilla con fade
+                $("#bulb").fadeOut(500, function () {
+                    $(this).toggleClass("on off").fadeIn(300);
+                });
+
+                // Cambia la imagen del interruptor 
+                $("#switch").toggleClass("switch-on switch-off");
+            });
+        });
+    </script>
+</body>
+</html>
