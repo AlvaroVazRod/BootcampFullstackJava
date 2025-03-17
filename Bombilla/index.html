@@ -37,12 +37,11 @@
     <script>
         $(document).ready(function () {
             $("#switch").click(function () {
-                // Cambia la imagen de la bombilla con fade
+
                 $("#bulb").fadeOut(500, function () {
                     $(this).toggleClass("on off").fadeIn(300);
                 });
 
-                // Cambia la imagen del interruptor 
                 $("#switch").toggleClass("switch-on switch-off");
             });
         });
