@@ -72,6 +72,6 @@ function removeAt() {
 
 function proveError(arr, arrName) {
     if (arr.length === 0) {
-        throw new Error('Error el array "${arrName}" esta vacio.');
+        throw new Error(`Error el array "${arrName}" está vacio.`);
     }
 }
