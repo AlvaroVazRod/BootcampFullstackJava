@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, Papel o Tijeras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        button {
+            font-size: 20px;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Piedra, Papel o Tijeras ✊📄✂️</h1>
+    <h2 id="ronda">Ronda 1 de 3</h2>
+
+    <div id="botones">
+        <button onclick="playGame('piedra')">✊ Piedra</button>
+        <button onclick="playGame('papel')">📄 Papel</button>
+        <button onclick="playGame('tijeras')">✂️ Tijeras</button>
+    </div>
+
+    <h2 id="eleccionJugador"></h2>
+    <h2 id="eleccionComputadora"></h2>
+    <h2 id="resultado"></h2>
+    <h3 id="puntuacion">Puntuación: Jugador 0 - 0 Computadora</h3>
+    <h2 id="mensajeFinal"></h2>
+    <script src="./script.js"></script>
+</body>
+
+</html>
