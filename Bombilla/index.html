@@ -11,7 +11,7 @@
         }
 
         .img {
-            margin: 30px auto;
+            margin: 20px auto;
             display: block;
             transition: opacity 0.3s ease-in-out;
         }
@@ -61,6 +61,8 @@
         <input type="range" id="brightnessRange" min="0.5" max="2" step="0.1" value="1" disabled>
         <label for="sizeImage">Tamaño</label>
         <input type="range" id="sizeImage"  min="500" max="1000" step="10" value="500">
+        <label for="turnImage">Girar <span id="angleValue">0°</span></label>
+        <input type="range" id="turnImage"  min="0" max="360" step="5" value="0">
     </div>
 
     <script src="./main.js"></script>
