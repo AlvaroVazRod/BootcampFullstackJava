@@ -1,50 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bombilla con Animación</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .container {
             text-align: center;
         }
+
         .img {
             margin: 30px auto;
             display: block;
+            transition: opacity 0.3s ease-in-out;
         }
+
         .on {
+
             content: url('./on.jpg');
+
         }
+
         .off {
             content: url('./off.jpg');
+
         }
+
         .switch-on {
+
             content: url('./bon.jpg');
+
         }
+
         .switch-off {
+
             content: url('./boff.jpg');
+
+        }
+
+        label {
+            font-size: 16px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        #bulb {
+            filter: brightness(1);
+            transition: filter 0.3s ease-in-out;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Encender / Apagar</h1>
         <img src="./off.jpg" class="img off" id="bulb" alt="bulb">
-        <img src="./boff.jpg" class="img switch-off" id="switch" alt="switch" style="cursor: pointer;">
+        <img src="./boff.jpg" class="img switch-off" tabindex="0" id="switch" alt="switch" style="cursor: pointer;">
+        <label for="brightnessRange">Brillo</label>
+        <input type="range" id="brightnessRange" min="0.5" max="2" step="0.1" value="1" disabled>
+        <label for="sizeImage">Tamaño</label>
+        <input type="range" id="sizeImage"  min="500" max="1000" step="10" value="500">
     </div>
 
-    <script>
-        $(document).ready(function () {
-            $("#switch").click(function () {
-
-                $("#bulb").fadeOut(500, function () {
-                    $(this).toggleClass("on off").fadeIn(300);
-                });
-
-                $("#switch").toggleClass("switch-on switch-off");
-            });
-        });
-    </script>
+    <script src="./main.js"></script>
 </body>
+
 </html>
