@@ -93,6 +93,21 @@
             margin: 5px 15px;
         }
 
+        #lifeContainer {
+            position: relative;
+            /* Quita el absolute para que se posicione de manera natural */
+            top: 5px;
+            /* Ajusta la posición verticalmente */
+            left: auto;
+            transform: none;
+            /* No lo centres con transform */
+            font-size: 24px;
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            /* Asegura que los corazones estén alineados */
+        }
+
         .bar {
             height: 100%;
             background: green;
@@ -153,8 +168,11 @@
         </div>
 
         <div class="mascot">
-            <h2>Fluffy</h2>
-            <img src="./26bfbc0b-5cd5-4e6c-a047-d0dd39ae79a5.jpg" alt="Mascota">
+            <div id="lifeContainer">
+                ❤️❤️❤️
+            </div>
+            <h2>Triss</h2>
+            <img src="./cat.png" id="catImg" alt="Mascota">
             <div class="bar-container">
 
                 <div class="bar" id="barHappy" style="width: 30%"></div>
