@@ -3,11 +3,11 @@ import { showMessage, performAction, startDecayTimer, stopDecayTimer,disableAllB
 import { Bar } from "./classBar";
 
 export class CatTama {
-    private eatBar = new EatBar();
-    private sleepBar = new SleepBar();
-    private fightBar = new FightBar();
-    private playBar = new PlayBar();
-    private lifeBar = new LifeBar();
+    private eatBar;
+    private sleepBar;
+    private fightBar;
+    private playBar;
+    private lifeBar;
     private lives: number = 3;
     private catImg: HTMLImageElement;
     private decayInterval: number | undefined;
