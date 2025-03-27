@@ -2,11 +2,6 @@ import { EatBar, SleepBar, FightBar, PlayBar, LifeBar } from "./bars";
 import { showMessage, performAction, startDecayTimer, stopDecayTimer, disableAllButtons } from "./utils";
 export class CatTama {
     constructor() {
-        this.eatBar = new EatBar();
-        this.sleepBar = new SleepBar();
-        this.fightBar = new FightBar();
-        this.playBar = new PlayBar();
-        this.lifeBar = new LifeBar();
         this.lives = 3;
         this.eatBar = new EatBar();
         this.sleepBar = new SleepBar();
@@ -39,28 +34,28 @@ export class CatTama {
             { bar: this.sleepBar, penalty: sleepDecrease },
             { bar: this.fightBar, penalty: fightDecrease }
         ], "./src/assets/playing_cat.png", this.catImg);
-        this.recoverBar(this.playBar, "barPlay", playIncrease);
+        this.recoverBar(this.playBar, "barPlay");
     }
     eat(foodIncrease, sleepDecrease, fightDecrease) {
         performAction("comer", this.eatBar, foodIncrease, [
             { bar: this.sleepBar, penalty: sleepDecrease },
             { bar: this.fightBar, penalty: fightDecrease }
         ], "./src/assets/simple_eating_cat.png", this.catImg);
-        this.recoverBar(this.eatBar, "barEat", foodIncrease);
+        this.recoverBar(this.eatBar, "barEat");
     }
     fight(fightIncrease, sleepDecrease, eatDecrease) {
         performAction("entrenar", this.fightBar, fightIncrease, [
             { bar: this.sleepBar, penalty: sleepDecrease },
             { bar: this.eatBar, penalty: eatDecrease }
         ], "./src/assets/exercising_cat.png", this.catImg);
-        this.recoverBar(this.fightBar, "barFight", fightIncrease);
+        this.recoverBar(this.fightBar, "barFight");
     }
     sleep(sleepIncrease, fightDecrease, eatDecrease) {
         performAction("Dormir", this.sleepBar, sleepIncrease, [
             { bar: this.fightBar, penalty: fightDecrease },
             { bar: this.eatBar, penalty: eatDecrease }
         ], "./src/assets/sleeping_cat.png", this.catImg);
-        this.recoverBar(this.sleepBar, "barSleep", sleepIncrease);
+        this.recoverBar(this.sleepBar, "barSleep");
     }
     applyDecay() {
         for (let { bar, key } of this.allBars) {
@@ -71,27 +66,37 @@ export class CatTama {
         }
         this.lifeBar.updateLife(this.allBars.map(b => b.bar));
     }
-    recoverBar(bar, key, amount) {
+    recoverBar(bar, key) {
         if (bar.getValue() > 0) {
             stopDecayTimer(key);
         }
         this.lifeBar.updateLife(this.allBars.map(b => b.bar));
     }
     checkDeath(bar) {
-        if (((bar === null || bar === void 0 ? void 0 : bar.getValue()) === 0)) {
+        const isDead = ((bar && bar.getValue() === 0) || // Si la barra que decayó llegó a 0
+            (this.eatBar.getValue() === 0 && this.sleepBar.getValue() === 0) || // Si Comida y Sueño están en 0
+            (this.lifeBar.getValue() < 20) // Si la vida total es menor a 20%
+        );
+        if (isDead) {
             this.lives--;
             this.updateLives();
             if (this.lives > 0) {
                 this.resetBars();
                 showMessage("⚠️ Has perdido una vida, pero Triss se recupera.");
+                for (const { key } of this.allBars) {
+                    stopDecayTimer(key);
+                }
             }
             else {
                 showMessage("💀 Triss ha muerto...");
                 this.catImg.src = './src/assets/lying_cat_closed_eyes.png';
                 disableAllButtons(); // 🔴 Deshabilita todos los botones
                 this.stopBarDecay();
-                document.body.innerHTML += "<h1 style='color:red; text-align:center;'>💀 GAME OVER 💀</h1>";
+                for (const { key } of this.allBars) {
+                    stopDecayTimer(key);
+                }
                 clearInterval(this.decayInterval);
+                document.body.innerHTML += "<h1 style='color:red; text-align:center;'>💀 GAME OVER 💀</h1>";
                 return;
             }
         }
@@ -109,9 +114,9 @@ export class CatTama {
     }
     startBarDecay() {
         this.decayInterval = setInterval(() => {
+            this.checkDeath();
             this.applyDecay();
             this.catImg.src = './src/assets/cat.png';
-            this.checkDeath();
         }, 20000);
     }
     stopBarDecay() {

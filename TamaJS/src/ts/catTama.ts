@@ -52,7 +52,7 @@ export class CatTama {
             "./src/assets/playing_cat.png",
             this.catImg
         );
-        this.recoverBar(this.playBar, "barPlay", playIncrease);
+        this.recoverBar(this.playBar, "barPlay");
     }
     private eat(foodIncrease: number, sleepDecrease: number, fightDecrease: number): void {
         performAction(
@@ -66,7 +66,7 @@ export class CatTama {
             "./src/assets/simple_eating_cat.png",
             this.catImg
         );
-        this.recoverBar(this.eatBar, "barEat", foodIncrease);
+        this.recoverBar(this.eatBar, "barEat");
     }
 
     private fight(fightIncrease: number, sleepDecrease: number, eatDecrease: number): void {
@@ -81,7 +81,7 @@ export class CatTama {
             "./src/assets/exercising_cat.png",
             this.catImg
         );
-        this.recoverBar(this.fightBar, "barFight", fightIncrease);
+        this.recoverBar(this.fightBar, "barFight");
     }
 
     private sleep(sleepIncrease: number, fightDecrease: number, eatDecrease: number): void {
@@ -96,7 +96,7 @@ export class CatTama {
             "./src/assets/sleeping_cat.png",
             this.catImg
         );
-        this.recoverBar(this.sleepBar, "barSleep", sleepIncrease);
+        this.recoverBar(this.sleepBar, "barSleep");
     }
 
     private applyDecay(): void {
@@ -110,7 +110,7 @@ export class CatTama {
 
 
     }
-    private recoverBar(bar: Bar, key: string, amount: number): void {
+    private recoverBar(bar: Bar, key: string,): void {
 
         if (bar.getValue() > 0) {
             stopDecayTimer(key);
@@ -118,20 +118,32 @@ export class CatTama {
         this.lifeBar.updateLife(this.allBars.map(b => b.bar));
     }
     private checkDeath(bar?: Bar): void {
-        if ((bar?.getValue() === 0)) {
+        const isDead = (
+            (bar && bar.getValue() === 0) ||  // Si la barra que decayó llegó a 0
+            (this.eatBar.getValue() === 0 && this.sleepBar.getValue() === 0) ||  // Si Comida y Sueño están en 0
+            (this.lifeBar.getValue() < 20)  // Si la vida total es menor a 20%
+        );
+        if (isDead) {
             this.lives--;
             this.updateLives();
 
             if (this.lives > 0) {
                 this.resetBars();
                 showMessage("⚠️ Has perdido una vida, pero Triss se recupera.");
+                for (const {key} of this.allBars) {
+                    stopDecayTimer(key);
+                }
             } else {
+
                 showMessage("💀 Triss ha muerto...");
                 this.catImg.src = './src/assets/lying_cat_closed_eyes.png'
                 disableAllButtons(); // 🔴 Deshabilita todos los botones
                 this.stopBarDecay();
-                document.body.innerHTML += "<h1 style='color:red; text-align:center;'>💀 GAME OVER 💀</h1>";
+                for (const {key} of this.allBars) {
+                    stopDecayTimer(key);
+                }
                 clearInterval(this.decayInterval);
+                document.body.innerHTML += "<h1 style='color:red; text-align:center;'>💀 GAME OVER 💀</h1>";
                 return;
             }
         }
@@ -152,9 +164,9 @@ export class CatTama {
 
     public startBarDecay(): void {
         this.decayInterval = setInterval(() => {
+            this.checkDeath();
             this.applyDecay();
             this.catImg.src = './src/assets/cat.png';
-            this.checkDeath();
         }, 20000);
     }
     public stopBarDecay(): void {

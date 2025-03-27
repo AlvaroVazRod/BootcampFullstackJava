@@ -21,7 +21,7 @@ export class PlayBar extends Bar {
 }
 export class LifeBar extends Bar {
     constructor() {
-        super("Life", "barHappy", "labelLife", 80, 0);
+        super("Life", "barHappy", "labelLife", 50, 0);
     }
     updateLife(bars) {
         let weightings = {
@@ -35,7 +35,6 @@ export class LifeBar extends Bar {
             let weight = (_a = weightings[bar.getName()]) !== null && _a !== void 0 ? _a : 0;
             return total + weight * bar.getValue();
         }, 0);
-        console.log(`✅ Nueva Vida Calculada: ${newLife}`);
         this.setValue(Math.round(newLife));
     }
 }

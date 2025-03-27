@@ -1,4 +1,3 @@
-import { LifeBar } from "./bars";
 import { Bar } from "./classBar";
 const dangerTimers: Map<string, number> = new Map();
 export function showMessage(message: string, bar?: Bar): boolean {

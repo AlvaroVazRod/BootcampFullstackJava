@@ -5,10 +5,9 @@
   },
   "scripts": {
     "dev": "vite --port 5173",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "watch": "tsc --watch && vite --port 5173"
+    "tsc:watch": "tsc --watch"
   },
+  "watch": true,
   "name": "tamajs",
   "version": "1.0.0",
   "main": "index.js",
