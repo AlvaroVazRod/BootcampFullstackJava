@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuck Norris Jokes</title>
+  
+  <!-- Fuente retro estilo videojuego -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <script src="script.js" defer></script> <!-- Compilado desde TypeScript -->
+  <style>
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background-color: #1a1a1a;
+      color: #ffcc00;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 3px 3px 0px red;
+    }
+
+    #joke-container {
+      background: black;
+      border: 3px solid red;
+      padding: 20px;
+      display: inline-block;
+      border-radius: 10px;
+      font-size: 14px;
+      width: 60%;
+      box-shadow: 4px 4px 0px #ff0000;
+    }
+
+    .button-container {
+      margin-top: 30px;
+    }
+
+    #jokeButton {
+      font-family: 'Press Start 2P', cursive;
+      background: red;
+      color: white;
+      border: 3px solid yellow;
+      padding: 15px 25px;
+      font-size: 14px;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0px #ffcc00;
+      transition: all 0.2s;
+    }
+
+    #jokeButton:hover {
+      transform: scale(1.1);
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chuck Norris Jokes</h1>
+
+  <div id="joke-container">
+    <p id="jokeText">Haz clic en el botón para obtener un chiste de Chuck Norris.</p>
+  </div>
+
+  <div class="button-container">
+    <button id="jokeButton">Obtener Chiste</button>
+  </div>
+
+</body>
+</html>
