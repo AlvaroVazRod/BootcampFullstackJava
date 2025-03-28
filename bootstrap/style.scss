@@ -1,0 +1,45 @@
+// Sobrescribir los breakpoints de Bootstrap
+$grid-breakpoints: (
+  xs: 0,
+  sm: 600px,   // Puedes ajustar los valores según necesites
+  md: 900px,
+  lg: 1100px,
+  xl: 1300px,
+  xxl: 1600px
+);
+
+// Importamos Bootstrap después de sobrescribir las variables
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+// Estilos personalizados
+body {
+  transition: background-color 0.5s ease; // Transición suave para el color de fondo
+
+  /* Por defecto, en pantallas más pequeñas (xs), el fondo será rojo */
+  background-color: red;
+
+  /* Cambiar color de fondo para pantallas mayores a 600px */
+  @media (min-width: 600px) {
+    background-color: orange;
+  }
+
+  /* Cambiar color de fondo para pantallas mayores a 900px */
+  @media (min-width: 900px) {
+    background-color: yellow;
+  }
+
+  /* Cambiar color de fondo para pantallas mayores a 1100px */
+  @media (min-width: 1100px) {
+    background-color: green;
+  }
+
+  /* Cambiar color de fondo para pantallas mayores a 1300px */
+  @media (min-width: 1300px) {
+    background-color: blue;
+  }
+
+  /* Cambiar color de fondo para pantallas mayores a 1600px */
+  @media (min-width: 1600px) {
+    background-color: purple;
+  }
+}
